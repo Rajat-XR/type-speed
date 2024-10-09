@@ -1,0 +1,146 @@
+@font-face {
+    font-family: SF-Pro-Bold;
+    src: url(../fonts/SF-Pro-Display-Bold.otf);
+}
+
+:root {
+    --bg-color: #EDE7F6;
+    --color: #8E80C4;
+    --font-bold: SF-Pro-Bold;
+    --header: hsla(251, 69%, 34%, 0.5);
+}
+
+body {
+    margin: 0;
+    background-color: var(--bg-color);
+    color: var(--color);
+    font-family: var(--font-bold);
+    height: 100vh;
+}
+
+.flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+h1{
+    font-family: var(--font-bold);
+    letter-spacing: 7px;
+}
+
+.header {
+    background: var(--header);
+    backdrop-filter: blur(0.8rem);
+    color: white;
+    width: 100%;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    /* box-shadow: -0.2px 10px 10px var(--color); */
+    
+}
+#gamebtn{
+    display: none;
+}
+.content {
+    flex-direction: column;
+}
+
+.stats {
+    gap: 8rem;
+    width: 100%;
+    font-size: 1.8rem;
+}
+
+.themebtn {
+    width: 4em;
+    height: 4em;
+    border-radius: 50%;
+    border: none;
+    transition: all 250ms ease-in-out;
+    font-family: var(--font-bold);
+
+    &:hover{
+        transform: scale(1.1);
+        background-color: grey;
+        
+    }
+}
+
+input {
+    padding: 12px 10px;
+    width: 20rem;
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    box-shadow: 2px 15px 50px var(--color);
+}
+
+#word {
+    font-size: 3rem;
+    margin: 0;
+    color: var(--color);
+    font-weight: 800;
+    font-family: var(--font-bold);
+    /* text-shadow:  */
+}
+
+#score {
+    transition: all 50ms ease-in-out;
+}
+
+#instruction {
+    width: 40%;
+    text-align: justify;
+    padding: 25px;
+    background: var(--color);
+    color: white;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    box-shadow: 2px 20px 80px var(--color);
+}
+
+input::placeholder {
+    font-weight: 500;
+    color: black;
+    font-family: var(--font-bold);
+}
+
+#history {
+    display: none;
+    position: fixed;
+    top: 2em;
+    left: 0.5em;
+    color: var(--bg-color);
+    padding: 10px;
+}
+
+.branding {
+    margin: 0;
+    position: fixed;
+    gap: 7px;
+    left: 0.5em;
+    bottom: 0.4em;
+    justify-content: start;
+    align-items: center;
+    background-color: var(--color);
+    color: white;
+    outline: 2px dashed white;
+    border-radius: 20px;
+    padding: 0px 15px;
+}
+
+span{
+    color: black;
+    font-weight: 800;
+    text-decoration-line: underline;
+    text-decoration-style: wavy;
+    text-decoration-color:var(--color);
+}
+
+#result{
+    font-size: 1.7rem;
+}
