@@ -1,17 +1,24 @@
-import {easy,med,hard,pro} from './words.js';
+import { easy, med, hard, pro } from './words.js';
 const display_word = document.querySelector("#word")
 const user_input = document.querySelector("input")
-const result = document.querySelector("#result")
+// const result = document.querySelector("#result")
 const timeleft = document.querySelector("#time")
 const score = document.querySelector("#score")
 const highscore = document.querySelector("#highscore")
 const history = document.querySelector("#history")
 const root = document.querySelector(":root")
 const themebtn = document.querySelectorAll(".themebtn")
-const gamebtn = document.querySelector("#gamebtn")
+const trybtn = document.querySelector("#trybtn")
 const level = document.querySelector("select")
+const settingbtn = document.querySelector("#settingbtn")
+const applybtn = document.querySelector("#applybtn")
+const settings_dialog = document.querySelector(".settings_dialog")
+const gameover_result = document.querySelector(".gameover_result")
+const gameover_display = document.querySelector("#gameover")
+// const gameover_score = document.querySelector("#")
+// const gameover_high_score = document.querySelector("#")
 const min = 0
-let max = 50
+let max = 3061
 let words = []
 let time = 6
 let user_score = 0
@@ -24,45 +31,49 @@ document.addEventListener("DOMContentLoaded", () => {
 
     level.onchange = function () {
         if (this.value == "easy") {
-            words.length=0
-            max = 1176
+            words.length = 0
+            max = 3061
             random = Math.floor(Math.random() * (max - min + 1) + min);
             words.push(...easy)
             console.log(words.length)
             display_word.innerHTML = words[random]
-            // level.disabled = true
         }
-        
+
         if (this.value == "medium") {
-            words.length=0
-            max = 416
+            words.length = 0
+            max = 312
             random = Math.floor(Math.random() * (max - min + 1) + min);
             words.push(...med)
             console.log(words.length)
             display_word.innerHTML = words[random]
-            // level.disabled = true
         }
 
         if (this.value == "hard") {
-            words.length=0
+            words.length = 0
             max = 340
             random = Math.floor(Math.random() * (max - min + 1) + min);
             words.push(...hard)
             console.log(words.length)
             display_word.innerHTML = words[random]
-            // level.disabled = true
         }
         if (this.value == "pro") {
-            words.length=0
+            words.length = 0
             max = 92
             random = Math.floor(Math.random() * (max - min + 1) + min);
             words.push(...pro)
             console.log(words.length)
             display_word.innerHTML = words[random]
-            // level.disabled = true
         }
     }
 
+    settingbtn.onclick = () => {
+        settings_dialog.showModal()
+        settingbtn.innerHTML = "Waiting for User..."
+    }
+    applybtn.onclick = () => {
+        settings_dialog.close()
+        settingbtn.innerHTML = "Game Settings"
+    }
     // if (localStorage.getItem("theme") != null) {
     //     for (let i = 0; i <= 3; i++) {
     //         if (localStorage.getItem("theme") == themebtn[i].dataset.theme) {
@@ -92,7 +103,9 @@ document.addEventListener("DOMContentLoaded", () => {
     words.push(...easy)
     display_word.innerHTML = words[random]
 
-    gamebtn.onclick = () => {
+    trybtn.onclick = () => {
+        time = 6
+        gameover_display.close()
         gamebtn.style.display = "none"
         user_input.disabled = false
         user_input.focus()
@@ -103,9 +116,10 @@ document.addEventListener("DOMContentLoaded", () => {
     user_input.onkeyup = () => {
         if (flag == 0 || flagg == 1) {
             flagg = 0;
-            result.innerHTML = ""
             let a = setInterval(() => {
                 if (time === 0) {
+                    gameover_result.showModal()
+                    // gameover_result.style.display = "block"
                     result.innerHTML = `☠️Game Over☠️ [Your Score: ${user_score}]`
                     user_input.style.display = "none"
                     gamebtn.style.display = "block"
@@ -141,7 +155,7 @@ document.addEventListener("DOMContentLoaded", () => {
             score.innerHTML = `Score: ${user_score}`
             score.style.color = "green"
             score.style.transform = "scale(1.1)"
-            time = 6;
+            time = 6
         }
         else {
             score.style.color = "red"

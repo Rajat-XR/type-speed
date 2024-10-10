@@ -18,34 +18,48 @@
         <h2>Type the Given Word Within <span>5 seconds</span></h2>
         <p id="word">menu</p>
         <input type="text" placeholder="Start typing to Start..." autofocus>
-        <div class="start">
-            <button id="gamebtn">Try again</button>
-        </div>
-        <div class="level">
-            <label>Choose Difficulty: </label>
-            <select>
-                <option value="easy">Easy</option>
-                <option value="medium">Medium</option>
-                <option value="hard">Hard</option>
-                <option value="pro">Extreme</option>
-            </select>
-        </div>
-        <p id="result"></p>
+      
+        <dialog class="gameover_result">
+            <p id="gameover"></p>
+            <p id="">Your Score:</p>
+            <p id="">High Score:</p>
+
+            <button id="trybtn">Try again</button>
+        </dialog>
+
+        <!-- <p id="result"></p> -->
+        <button id="settingbtn">Game Settings</button>
+        <dialog class="settings_dialog">
+            <div class="level">
+                <label>Choose Difficulty: </label>
+                <select>
+                    <option value="easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
+                    <option value="pro">Extreme</option>
+                </select>
+            </div>
+            <div class="themes">
+                <button class="themebtn" data-theme="0" data-bgcolor="red" data-color="white">Theme 1</button>
+                <button class="themebtn" data-theme="1" data-bgcolor="blue" data-color="yellow">Theme 2</button>
+                <button class="themebtn" data-theme="2" data-bgcolor="yellow" data-color="blue">Theme 3</button>
+                <button class="themebtn" data-theme="3" data-bgcolor="brown" data-color="wheat">Theme 4</button>
+            </div>
+            <button id="applybtn">Apply</button>
+            
+        </dialog>
+        
         <div class="stats flex">
             <p id="time">Time: 5 seconds</p>
             <p id="score">Score: 0</p>
             <p id="highscore">High Score: </p>
         </div>
+
         <div id="history">
-    
+
         </div>
-     
-        <div class="themes">
-            <button class="themebtn" data-theme = "0" data-bgcolor="red" data-color="white">Theme 1</button>
-            <button class="themebtn" data-theme = "1" data-bgcolor="blue" data-color="yellow">Theme 2</button>
-            <button class="themebtn" data-theme = "2" data-bgcolor="yellow" data-color="blue">Theme 3</button>
-            <button class="themebtn" data-theme = "3" data-bgcolor="brown" data-color="wheat">Theme 4</button>
-        </div>
+
+
         <p id="instruction">Instructions: Type each word in the given amount of seconds to score. To play again, just
             type the current
             word. Your score will reset</p>
