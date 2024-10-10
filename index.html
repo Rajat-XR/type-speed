@@ -18,25 +18,25 @@
         <h2>Type the Given Word Within <span>5 seconds</span></h2>
         <p id="word">menu</p>
         <input type="text" placeholder="Start typing to Start..." autofocus>
-      
+
         <dialog class="gameover_result">
             <p id="gameover_display"></p>
             <p id="gameover_score"></p>
             <p id="gameover_high"></p>
 
-            <button id="trybtn">Try again</button>
+            <button id="trybtn">Play again</button>
         </dialog>
 
-        <!-- <p id="result"></p> -->
-        <button id="settingbtn">Game Settings</button>
+        <button id="settingbtn">Difficulty & Theme Settings</button>
+
         <dialog class="settings_dialog">
             <div class="level">
                 <label>Choose Difficulty: </label>
                 <select>
-                    <option value="easy">Easy</option>
-                    <option value="medium">Medium</option>
-                    <option value="hard">Hard</option>
-                    <option value="pro">Extreme</option>
+                    <option value="Easy Mode">Easy</option>
+                    <option value="Medium Mode">Medium</option>
+                    <option value="Hard Mode">Hard</option>
+                    <option value="Pro Mode">Pro</option>
                 </select>
             </div>
             <div class="themes">
@@ -46,9 +46,9 @@
                 <button class="themebtn" data-theme="3" data-bgcolor="brown" data-color="wheat">Theme 4</button>
             </div>
             <button id="applybtn">Apply</button>
-            
+
         </dialog>
-        
+
         <div class="stats flex">
             <p id="time">Time: 5 seconds</p>
             <p id="score">Score: 0</p>
@@ -60,9 +60,9 @@
         </div>
 
 
-        <p id="instruction">Instructions: Type each word in the given amount of seconds to score. To play again, just
-            type the current
-            word. Your score will reset</p>
+        <p id="instruction">Instructions: Type each word or clause under 5 seconds to score (+1 for each correct). Change level & themes
+            under "Difficulty & Theme Settings". To play again, just
+            click 'Play Again' in Game Over dialog</p>
 
     </div>
     <div class="branding flex">

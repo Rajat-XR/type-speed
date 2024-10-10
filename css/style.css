@@ -31,8 +31,7 @@ h1{
 }
 
 .header {
-    background: var(--header);
-    backdrop-filter: blur(0.8rem);
+    background: var(--color);
     color: white;
     width: 100%;
     text-align: center;
@@ -40,6 +39,31 @@ h1{
     top: 0;
     /* box-shadow: -0.2px 10px 10px var(--color); */
     
+}
+
+button{
+    padding: 1em 1.5em;
+    font-size: 15px;
+    border-radius: 10em;
+    border: none;
+    background-color: var(--color);
+    color: white;
+    cursor: pointer;
+}
+
+.settings_dialog{
+    background-color: white;
+    color: var(--color);
+    height: 10rem;
+    width: 20rem;
+    padding: 1.5em 2em;
+    border-radius: 10px;
+    box-shadow: 2px 20px 120px black;
+
+    &::backdrop{
+        background-color: hsla(251, 47%, 58%, 0.5);
+        backdrop-filter: blur(0.5rem);
+    }
 }
 
 .gameover_result{
@@ -108,7 +132,7 @@ input {
 }
 
 #instruction {
-    width: 40%;
+    width: 45%;
     text-align: justify;
     padding: 25px;
     background: var(--color);
@@ -144,7 +168,7 @@ input::placeholder {
     background-color: var(--color);
     color: white;
     outline: 2px dashed white;
-    border-radius: 20px;
+    border-radius: 10px;
     padding: 0px 15px;
 }
 
