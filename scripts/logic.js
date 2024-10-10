@@ -1,7 +1,6 @@
 import { easy, med, hard, pro } from './words.js';
 const display_word = document.querySelector("#word")
 const user_input = document.querySelector("input")
-// const result = document.querySelector("#result")
 const timeleft = document.querySelector("#time")
 const score = document.querySelector("#score")
 const highscore = document.querySelector("#highscore")
@@ -13,21 +12,25 @@ const level = document.querySelector("select")
 const settingbtn = document.querySelector("#settingbtn")
 const applybtn = document.querySelector("#applybtn")
 const settings_dialog = document.querySelector(".settings_dialog")
-const gameover_result = document.querySelector(".gameover_result")
-const gameover_display = document.querySelector("#gameover")
-// const gameover_score = document.querySelector("#")
-// const gameover_high_score = document.querySelector("#")
+const result = document.querySelector(".gameover_result")
+
+const gameover_display = document.querySelector("#gameover_display")
+const gameover_score = document.querySelector("#gameover_score")
+const gameover_high = document.querySelector("#gameover_high")
+
 const min = 0
 let max = 3061
 let words = []
 let time = 6
 let user_score = 0
 let flag = 0
-let flagg = 0
 let random
 let arr = []
 
 document.addEventListener("DOMContentLoaded", () => {
+    random = Math.floor(Math.random() * (max - min + 1) + min);
+    words.push(...easy)
+    display_word.innerHTML = words[random]
 
     level.onchange = function () {
         if (this.value == "easy") {
@@ -99,45 +102,37 @@ document.addEventListener("DOMContentLoaded", () => {
         highscore.innerHTML = `High Score: ${localStorage.getItem("high")}`
     }
 
-    random = Math.floor(Math.random() * (max - min + 1) + min);
-    words.push(...easy)
-    display_word.innerHTML = words[random]
-
     trybtn.onclick = () => {
-        time = 6
-        gameover_display.close()
-        gamebtn.style.display = "none"
-        user_input.disabled = false
-        user_input.focus()
+        time = 5
+        user_score = 0;
+        user_input.value = ""
+        flag = 0
+        score.innerHTML = `Score: ${user_score}`
+        score.style.color = "yellow"
+        timeleft.innerHTML = `Time: 5 seconds`
         random = Math.floor(Math.random() * (max - min + 1) + min);
         display_word.innerHTML = words[random]
-        user_input.style.display = "block"
+        result.close()
     }
     user_input.onkeyup = () => {
-        if (flag == 0 || flagg == 1) {
-            flagg = 0;
+        if (flag == 0) {
             let a = setInterval(() => {
                 if (time === 0) {
-                    gameover_result.showModal()
-                    // gameover_result.style.display = "block"
-                    result.innerHTML = `☠️Game Over☠️ [Your Score: ${user_score}]`
-                    user_input.style.display = "none"
-                    gamebtn.style.display = "block"
-                    display_word.innerHTML = "GAME OVER"
-                    user_input.value = ""
-                    clearInterval(a);
-                    time = 6;
-                    flagg = 1;
                     if (user_score > localStorage.getItem("high")) {
                         localStorage.setItem("high", user_score)
-                        result.innerHTML = `🔥Great Game🔥 [New HIGH Score: ${user_score} 💪]`
+                        gameover_display.innerHTML = `🔥Great Game🔥 [New HIGH Score: ${user_score} 💪]`
                         highscore.innerHTML = `High Score: ${localStorage.getItem("high")}`
                     }
+                    else {
+                        gameover_display.innerHTML = "GAME OVER"
+                    }
+                    gameover_score.innerHTML = `Score: ${user_score}`
+                    gameover_high.innerHTML = `High: ${localStorage.getItem("high")}`
+                    result.showModal()
+                    clearInterval(a);
                     arr.push(user_score)
                     history.innerHTML = `Past Scores: ${arr}`;
                     history.style.display = "block"
-                    user_score = 0;
-                    score.innerHTML = `Score: ${user_score}`
                 }
                 else {
                     time--;

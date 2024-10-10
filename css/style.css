@@ -49,11 +49,11 @@ h1{
     width: 45rem;
     padding: 1.5em 2em;
     border-radius: 10px;
-    box-shadow: 2px 20px 60px purple;
+    box-shadow: 2px 20px 120px black;
 
     &::backdrop{
         background-color: hsla(251, 47%, 58%, 0.5);
-        backdrop-filter: blur(0.2rem);
+        backdrop-filter: blur(0.5rem);
     }
 }
 #gamebtn{
