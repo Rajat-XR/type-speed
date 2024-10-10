@@ -1,5 +1,4 @@
-import words from './words.js';
-
+import {easy,med,hard,pro} from './words.js';
 const display_word = document.querySelector("#word")
 const user_input = document.querySelector("input")
 const result = document.querySelector("#result")
@@ -10,8 +9,10 @@ const history = document.querySelector("#history")
 const root = document.querySelector(":root")
 const themebtn = document.querySelectorAll(".themebtn")
 const gamebtn = document.querySelector("#gamebtn")
+const level = document.querySelector("select")
 const min = 0
-const max = 561
+let max = 50
+let words = []
 let time = 6
 let user_score = 0
 let flag = 0
@@ -19,8 +20,48 @@ let flagg = 0
 let random
 let arr = []
 
-
 document.addEventListener("DOMContentLoaded", () => {
+
+    level.onchange = function () {
+        if (this.value == "easy") {
+            words.length=0
+            max = 1176
+            random = Math.floor(Math.random() * (max - min + 1) + min);
+            words.push(...easy)
+            console.log(words.length)
+            display_word.innerHTML = words[random]
+            // level.disabled = true
+        }
+        
+        if (this.value == "medium") {
+            words.length=0
+            max = 416
+            random = Math.floor(Math.random() * (max - min + 1) + min);
+            words.push(...med)
+            console.log(words.length)
+            display_word.innerHTML = words[random]
+            // level.disabled = true
+        }
+
+        if (this.value == "hard") {
+            words.length=0
+            max = 340
+            random = Math.floor(Math.random() * (max - min + 1) + min);
+            words.push(...hard)
+            console.log(words.length)
+            display_word.innerHTML = words[random]
+            // level.disabled = true
+        }
+        if (this.value == "pro") {
+            words.length=0
+            max = 92
+            random = Math.floor(Math.random() * (max - min + 1) + min);
+            words.push(...pro)
+            console.log(words.length)
+            display_word.innerHTML = words[random]
+            // level.disabled = true
+        }
+    }
 
     // if (localStorage.getItem("theme") != null) {
     //     for (let i = 0; i <= 3; i++) {
@@ -48,6 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     random = Math.floor(Math.random() * (max - min + 1) + min);
+    words.push(...easy)
     display_word.innerHTML = words[random]
 
     gamebtn.onclick = () => {
@@ -105,12 +147,5 @@ document.addEventListener("DOMContentLoaded", () => {
             score.style.color = "red"
             score.style.transform = "scale(1)"
         }
-
-        // setInterval(() => {
-        //     flag++;
-        //     console.log(flag)
-        //     console.log(flagg)
-        // }, 1000)
-
     }
 })
